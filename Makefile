@@ -43,7 +43,9 @@ fclean: clean
 
 re: fclean all
 
-git: fclean
+git: 
+	make fclean
+	make -C $(LIBFTDIR) fclean
 	git add .
 	git commit -m "auto-commit"
 	git push
