@@ -1,7 +1,6 @@
 #include "push_swap.h"
 
 static int is_num(char *str);
-static int  check_duplicates(t_stack stack);
 
 int    validate(int argc, char **argv)
 {
@@ -47,18 +46,18 @@ static int is_num(char *str)
         return 1;;
 }
 
-static int  check_duplicates(t_stack stack)
+int  check_duplicates(t_stack stack)
 {
     t_list  *current;
     t_list  *iter;
 
     current = stack.head;
-    while (current->next != NULL)
+    while (current != NULL)
     {
         iter = current->next;
-        while (iter->next != NULL)
+        while (iter != NULL)
         {
-            if (current->content == iter->content)
+            if (*(int *)current->content == *(int *)iter->content)
                 return (0);
             iter = iter->next;
         }

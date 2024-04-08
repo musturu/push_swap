@@ -1,5 +1,6 @@
 
 # include "../libft/libft.h"
+#include <stdio.h>
 
 
 typedef struct s_stack
@@ -16,3 +17,4 @@ typedef struct s_push
 
 int    validate(int argc, char **argv);
 void    get_stack(t_push *stacks, int argc, char **argv);
+int  check_duplicates(t_stack stack);
