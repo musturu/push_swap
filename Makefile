@@ -13,8 +13,8 @@ LIBFTDIR = libft
 LIBSFLAG = -L$(LIBFTDIR) -lft
 
 # Source files
-SRCS =  \
-OBJS =  \
+SRCS =  srcs/push_swap.c srcs/validate.c  
+OBJS =  objs/push_swap.o objs/validate.o 
 
 
 # Executable name
@@ -23,14 +23,12 @@ NAME = push_swap
 all: $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) -Wall -Wextra -Werror  $(LIBSFLAG) -c $< -o $@
+	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -O3 -c $< -o $@
 
 
 $(NAME): $(OBJS)
-	@ make -C $(FT_PRINTFDIR)
-	@ make -C $(MLXDIR)
 	@ make -C $(LIBFTDIR)
-	$(CC) $(OBJS) $(LIBSFLAG) -o $(NAME)
+	$(CC) -Wall -Wextra -Werror $(OBJS) $(LIBSFLAG) -o $(NAME)
 
 $(OBJDIR):
 	mkdir -p $@

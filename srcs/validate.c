@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
 static int is_num(char *str);
+static int  check_duplicates(t_stack stack);
 
 int    validate(int argc, char **argv)
 {
@@ -19,7 +20,7 @@ int    validate(int argc, char **argv)
     {
         i = -1;
         split = ft_split(argv[1], ' ');
-        while (split[i++])
+        while (split[++i])
         {
             if (!is_num(split[i]))
                 return (0);
@@ -27,33 +28,6 @@ int    validate(int argc, char **argv)
         free(split);
     }
     return (1);
-}
-
-int *get_stack(int argc, char **argv)
-{
-    int     *ret;
-    char    **split;
-    int i;
-
-    i = 0;
-    if (argc == 2)
-    {
-        split = ft_split(argv[1], ' ');
-        while (split[i])
-            i++;
-        ret = ft_calloc(i, sizeof(int));
-        i = -1;
-        while (split[++i])
-            ret[i] = ft_atoi(split[i]);
-        free(split);
-    }
-    else
-    {
-        ret = ft_calloc(argc - 1, sizeof(int));
-        while (i < argc)
-            ret[i] = ft_atoi(argv[i]);
-    }
-    return (ret);
 }
 
 static int is_num(char *str)
@@ -71,4 +45,24 @@ static int is_num(char *str)
         return (0);
     else
         return 1;;
+}
+
+static int  check_duplicates(t_stack stack)
+{
+    t_list  *current;
+    t_list  *iter;
+
+    current = stack.head;
+    while (current->next != NULL)
+    {
+        iter = current->next;
+        while (iter->next != NULL)
+        {
+            if (current->content == iter->content)
+                return (0);
+            iter = iter->next;
+        }
+        current = current->next;
+    }
+    return (1);
 }
