@@ -20,3 +20,8 @@ void	get_stack(t_push *stacks, int argc, char **argv);
 int		check_duplicates(t_stack stack);
 void	print_stack(t_list *list);
 void	sa(t_push *stacks);
+void	pb(t_push *stacks);
+void	pa(t_push *stacks);
+void	ss(t_push *stacks);
+void	sb(t_push *stacks);
+

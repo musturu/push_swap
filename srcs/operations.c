@@ -15,7 +15,7 @@ void	sa(t_push *stacks)
 		b->next = a;
 		stacks->a.head = b;
 	}
-	//print_stack(stacks->a.head);
+	print_stack(stacks->a.head);
 }
 
 void	sb(t_push *stacks)
@@ -43,10 +43,17 @@ void	ss(t_push *stacks)
 
 void	pa(t_push *stacks)
 {
-	sa(stacks);
 }
 
 void	pb(t_push *stacks)
 {
-	sa(stacks);
+	t_list	*bfirst;
+
+	if (stacks->a.head)
+	{
+		bfirst = stacks->b.head;
+		stacks->b.head = stacks->a.head;
+		stacks->b.head->next = bfirst;
+		bfirst->next = bfirst->next->next;
+	}
 }

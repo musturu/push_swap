@@ -4,11 +4,12 @@
 void	print_stack(t_list *list)
 {
 	t_list *tmp;
-
+	int i;
 	tmp = list;
 	while (tmp)
 	{
-		printf("current: [%p]  next: [%p] value : %d \n", tmp, tmp->next, *(int *)(tmp->content));
+		i = *((int *)tmp->content);
+		printf("current: [%p]  next: [%p] value : %d \n", tmp, tmp->next, i);
 		tmp = tmp->next;
 	}
 }
@@ -22,12 +23,11 @@ int	main(int argc, char **argv)
 	get_stack(&stacks, argc, argv);
 	if (check_duplicates(stacks.a) == 0)
 		return (printf("no duplicati\n"));
-	printf("\n???%p\n", stacks.a.head);
 	print_stack(stacks.a.head);
-	printf("\n???%p\n", stacks.a.head);
-	sa(&stacks);
+	pb(&stacks);
 	print_stack(stacks.a.head);
-	printf("\n???%p\n", stacks.a.head);
+	printf("\nB:\n");
+	print_stack(stacks.b.head);
     // solve
     // exit
 }
