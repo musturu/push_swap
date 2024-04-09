@@ -13,8 +13,8 @@ LIBFTDIR = libft
 LIBSFLAG = -L$(LIBFTDIR) -lft
 
 # Source files
-SRCS =  srcs/push_swap.c srcs/validate.c srcs/init.c  
-OBJS =  objs/push_swap.o objs/validate.o objs/init.o
+SRCS =  srcs/push_swap.c srcs/validate.c srcs/init.c srcs/operations.c
+OBJS =  objs/push_swap.o objs/validate.o objs/init.o objs/operations.o
 
 
 # Executable name
@@ -27,6 +27,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 
 
 $(NAME): $(OBJS)
+	@ make -C $(LIBFTDIR)
 	@ make bonus -C $(LIBFTDIR)
 	$(CC) -Wall -Wextra -Werror $(OBJS) $(LIBSFLAG) -o $(NAME)
 
