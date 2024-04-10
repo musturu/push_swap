@@ -43,17 +43,30 @@ void	ss(t_push *stacks)
 
 void	pa(t_push *stacks)
 {
+	t_list	*bfirst;
+	t_list	*afirst;
+
+	if (stacks->b.head)
+	{
+		bfirst = stacks->b.head;
+		afirst = stacks->a.head;
+		stacks->b.head = bfirst->next;
+		bfirst->next = afirst;
+		stacks->a.head = bfirst;
+	}
 }
 
 void	pb(t_push *stacks)
 {
 	t_list	*bfirst;
+	t_list	*afirst;
 
 	if (stacks->a.head)
 	{
 		bfirst = stacks->b.head;
-		stacks->b.head = stacks->a.head;
-		stacks->b.head->next = bfirst;
-		bfirst->next = bfirst->next->next;
+		afirst = stacks->a.head;
+		stacks->a.head = afirst->next;
+		afirst->next = bfirst;
+		stacks->b.head = afirst;
 	}
 }

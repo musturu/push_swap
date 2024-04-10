@@ -25,6 +25,12 @@ int	main(int argc, char **argv)
 		return (printf("no duplicati\n"));
 	print_stack(stacks.a.head);
 	pb(&stacks);
+	printf("\nA:\n");
+	print_stack(stacks.a.head);
+	printf("\nB:\n");
+	print_stack(stacks.b.head);
+	pa(&stacks);
+	printf("\nA:\n");
 	print_stack(stacks.a.head);
 	printf("\nB:\n");
 	print_stack(stacks.b.head);
