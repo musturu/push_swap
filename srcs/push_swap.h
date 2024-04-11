@@ -27,4 +27,6 @@ void	rra(t_push *stacks);
 void	rrb(t_push *stacks);
 void	rrr(t_push *stacks);
 void	sb(t_push *stacks);
-
+void	rb(t_push *stacks);
+void	ra(t_push *stacks);
+void	rr(t_push *stacks);

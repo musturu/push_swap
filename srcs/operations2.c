@@ -1,26 +1,36 @@
 #include "push_swap.h"
 
-void	ra(t_push stacks)
+static void	rotate(t_list *list);
+
+void	ra(t_push *stacks)
+{
+	rotate(stacks->a.head);
+	write(1, "ra\n", 3);
+}
+
+void	rb(t_push *stacks)
+{
+	rotate(stacks->b.head);
+	write(1, "rb\n", 3);
+}
+
+void	rr(t_push *stacks)
+{
+	rotate(stacks->b.head);
+	rotate(stacks->a.head);
+	write(1, "rr\n", 3);
+}
+
+static void	rotate(t_list *list)
 {
 	t_list *current;
 	t_list *last;
 
-	current = stacks.a.head;
+	current = list;
 	while(current->next->next != NULL)
 		current = current->next;
 	last = current->next;
 	current->next = NULL;
-	last->next = stacks.a.head;
-	stacks.a.head = last;
+	last->next = list;
+	list = last;
 }
-
-void	rb(t_push stacks)
-{
-
-}
-
-void	rr(t_push stacks)
-{
-
-}
-

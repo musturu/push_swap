@@ -23,7 +23,7 @@ NAME = push_swap
 all: $(NAME)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -O3 -c $< -o $@
+	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -c $< -o $@
 
 
 $(NAME): $(OBJS)
@@ -42,7 +42,7 @@ fclean: clean
 
 re: fclean all
 
-git: 
+git:
 	make fclean
 	make -C $(LIBFTDIR) fclean
 	git add .
