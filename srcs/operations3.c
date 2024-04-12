@@ -1,22 +1,26 @@
 #include "push_swap.h"
 
+static void	revrotate(t_list *list);
+
 void	rrb(t_push *stacks)
 {
-    rotate(stacks->b.head);
+	if (stacks->b.head && stacks->b.head->next)
+		revrotate(stacks->b.head);
 	write(1, "rrb\n", 4);
 }
 
 void	rra(t_push *stacks)
 {
-    rotate(stacks->a.head);
+	if (stacks->a.head && stacks->a.head->next)
+		revrotate(stacks->a.head);
 	write(1, "rra\n", 4);
 
 }
 
 void	rrr(t_push *stacks)
 {
-    rotate(stacks->a.head);
-	rotate(stacks->b.head);
+    revrotate(stacks->a.head);
+	revrotate(stacks->b.head);
 	write(1, "rrr\n", 4);
 
 }
@@ -35,5 +39,4 @@ static void	revrotate(t_list *list)
     last->next = list;
     list = list->next;
     first->next = NULL;
-
 }

@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
-void	sa(t_push *stacks)
+void	sa(t_push *stacks, int writeflag)
 {
 	t_list	*a;
 	t_list	*b;
 	t_list	*c;
 
-	if (stacks->a.head->next)
+	if (stacks->a.head && stacks->a.head->next)
 	{
 		a = stacks->a.head;
 		b = a->next;
@@ -14,16 +14,18 @@ void	sa(t_push *stacks)
 		a->next = c;
 		b->next = a;
 		stacks->a.head = b;
+		if (writeflag)
+			write(1, "sa\n", 3);
 	}
 }
 
-void	sb(t_push *stacks)
+void	sb(t_push *stacks, int writeflag)
 {
 	t_list	*a;
 	t_list	*b;
 	t_list	*c;
 
-	if (stacks->b.head->next)
+	if (stacks->b.head && stacks->b.head->next)
 	{
 		a = stacks->b.head;
 		b = stacks->b.head->next;
@@ -31,13 +33,16 @@ void	sb(t_push *stacks)
 		a->next = c;
 		b->next = a;
 		stacks->b.head = b;
+		if (writeflag)
+			write(1, "sb\n", 3);
 	}
 }
 
 void	ss(t_push *stacks)
 {
-	sa(stacks);
-	sb(stacks);
+	sa(stacks, 0);
+	sb(stacks, 0);
+	write(1, "ss\n", 3);
 }
 
 void	pa(t_push *stacks)
@@ -52,6 +57,7 @@ void	pa(t_push *stacks)
 		stacks->b.head = bfirst->next;
 		bfirst->next = afirst;
 		stacks->a.head = bfirst;
+		write(1, "pa\n", 3);
 	}
 }
 
@@ -67,5 +73,6 @@ void	pb(t_push *stacks)
 		stacks->a.head = afirst->next;
 		afirst->next = bfirst;
 		stacks->b.head = afirst;
+		write(1, "pb\n", 3);
 	}
 }

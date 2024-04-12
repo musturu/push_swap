@@ -9,7 +9,8 @@ void	print_stack(t_list *list)
 	while (tmp)
 	{
 		i = ((int *)tmp->content);
-		printf("current: [%p]  next: [%p] value : %d \n", tmp, tmp->next, *i);
+		printf("current: [%p]  next: [%p] value : \t%d ", tmp, tmp->next, *i);
+		printf("\tvalue pointer: %p\n", tmp->content);
 		tmp = tmp->next;
 	}
 }
@@ -32,7 +33,7 @@ int	main(int argc, char **argv)
 	if (check_duplicates(stacks.a) == 0)
 		return (printf("no duplicati\n"));
 	print_both(stacks);
-	ss(&stacks);
+	rra(&stacks);
 	print_both(stacks);
     // solve
     // exit
