@@ -33,7 +33,25 @@ int	main(int argc, char **argv)
 	if (check_duplicates(stacks.a) == 0)
 		return (printf("no duplicati\n"));
 	print_both(stacks);
+	pb(&stacks);
+	pb(&stacks);
+	pb(&stacks);
+	pb(&stacks);
+	pb(&stacks);
+	sa(&stacks, 1);
+	sb(&stacks, 1);
+	ss(&stacks);
+	ra(&stacks);
+	ra(&stacks);
+	rb(&stacks);
+	rb(&stacks);
+	rr(&stacks);
 	rra(&stacks);
+	rra(&stacks);
+	rrb(&stacks);
+	rrb(&stacks);
+	rrr(&stacks);
+	rrr(&stacks);
 	print_both(stacks);
     // solve
     // exit
