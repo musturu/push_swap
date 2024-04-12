@@ -1,6 +1,7 @@
 
 # include "../libft/libft.h"
-#include <stdio.h>
+# include <stdio.h>
+# include <limits.h>
 
 
 typedef struct s_stack
@@ -30,3 +31,5 @@ void	sb(t_push *stacks);
 void	rb(t_push *stacks);
 void	ra(t_push *stacks);
 void	rr(t_push *stacks);
+int		is_sorted(t_stack stack);
+int		check_shortest(int ia,int  ib,int  asize,int bsize);
