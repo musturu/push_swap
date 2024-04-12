@@ -11,7 +11,10 @@ void	get_stack(t_push *stack, int argc, char **argv)
 
     i = 2;
     if (argc == 2)
-		return (split_stack(stack, argv));
+    {
+        split_stack(stack, argv);
+        return ;
+    }
 	headcont = malloc(sizeof(int));
     *headcont = ft_atoi(argv[1]);
 	printf("inside list: %i\n", *headcont);
@@ -52,6 +55,7 @@ static void	split_stack(t_push *stack, char **argv)
     headcont = ft_atoi(split[0]);
     stack->a.size = size;
     stack->a.head = ft_lstnew(&headcont);
+    stack->b.head = NULL;
     while (i < size)
         append_list(split, &(stack->a.head), i++);
     while (size--)
