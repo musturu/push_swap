@@ -57,6 +57,8 @@ void	pa(t_push *stacks)
 		stacks->b.head = bfirst->next;
 		bfirst->next = afirst;
 		stacks->a.head = bfirst;
+		stacks->a.size++;
+		stacks->b.size--;
 		write(1, "pa\n", 3);
 	}
 }
@@ -73,6 +75,8 @@ void	pb(t_push *stacks)
 		stacks->a.head = afirst->next;
 		afirst->next = bfirst;
 		stacks->b.head = afirst;
+		stacks->a.size--;
+		stacks->b.size++;
 		write(1, "pb\n", 3);
 	}
 }

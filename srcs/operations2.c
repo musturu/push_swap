@@ -4,7 +4,7 @@ static void	rotate(t_list **list);
 
 void	ra(t_push *stacks)
 {
-	//printf("AJE\n");
+	printf("AJE\n");
 	if (stacks->a.head && stacks->a.head->next)
 	{
 		rotate(&(stacks->a.head));

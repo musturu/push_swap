@@ -28,10 +28,15 @@ static t_list	*next_move(t_push stacks)
 	int		tmp;
 
 	current = stacks.a.head;
-	cost = -1;
+	cost = calculate_cost(stacks, current);
 	while (current)
 	{
 		tmp = calculate_cost(stacks, current);
+		if (tmp < cost)
+		{
+			cost = tmp;
+			ret = current;
+		}
 		current = current->next;
 	}
 	return (ret);
@@ -40,26 +45,56 @@ static t_list	*next_move(t_push stacks)
 
 static void		rotate_to_list(t_push *stacks, t_list *a, t_list *b)
 {
-
+	return ;
 }
 
 
 static int		calculate_cost(t_push stacks, t_list *current)
 {
-	int cost;
-	int	ia;
-	int	ib;
-	t_list	*iter;
+	int		i[2];
+	int		cost;
 	t_list	*target;
 
-	ia = 0;
-	ib = 0;
-	iter = stacks.a.head;
+	i[0] = 0;
+	i[1] = 0;
 	target = find_target(stacks, *(int *)current->content);
-	while (iter != current && ++ia > -900)
-		iter = iter->next;
-	while (iter != target && ++ib > -900)
-		iter = iter->next;
-	cost = check_shortest(ia, ib, stacks.a.size, stacks.b.size);
+	i[0] = find_corresponding_index(stacks.a.head, current);
+	i[1] = find_corresponding_index(stacks.b.head, target);
+	cost = check_shortest(i[0], i[1], stacks.a.size, stacks.b.size);
 	return (cost);
+}
+
+static int	check_shortest(int ia, int ib, int asize, int bsize)
+{
+	int	ret;
+
+	ret = 0;
+	if (ia > asize / 2)
+		ia = asize - ia;
+	if (ib > bsize / 2)
+		ib = bsize - ib;
+	ret = ib + ia;
+}
+
+static int	find_corresponding_index(t_list *head, t_list *target)
+{
+	int		i;
+	t_list	*iter;
+
+	i = 0;
+	iter = head;
+	while (iter != target)
+	{
+		iter = iter->next;
+		i++;
+	}
+	return (i);
+}
+static t_list	*find_target(t_push stacks, int target)
+{
+	t_list	*iter;
+
+	iter = stacks.b.head;
+	while (*(int *)(iter->content))
+		iter = iter->next;
 }
