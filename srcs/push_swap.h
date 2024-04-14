@@ -3,6 +3,13 @@
 # include <stdio.h>
 # include <limits.h>
 
+typedef struct s_rotation
+{
+	int	rrarb;
+	int	rrbra;
+	int	rr;
+	int	rrr;
+} t_rotation;
 
 typedef struct s_stack
 {
@@ -32,4 +39,6 @@ void	rb(t_push *stacks);
 void	ra(t_push *stacks);
 void	rr(t_push *stacks);
 int		is_sorted(t_stack stack);
-int		check_shortest(int ia,int  ib,int  asize,int bsize);
+int		calculate_cost(t_push stacks, t_list *current, t_list *target);
+int		find_corresponding_index(t_list *head, t_list *target);
+void	rotate_to_list(t_push *stacks, t_list *a, t_list *b);

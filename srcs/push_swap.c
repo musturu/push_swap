@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	print_both(stacks);
 	ra(&stacks);
 	print_both(stacks);
+	check_shortest(9, 1, 10, 5);
     // solve
     // exit
 }
