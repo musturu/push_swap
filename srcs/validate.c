@@ -37,7 +37,11 @@ static int is_num(char *str)
     while (str[i] == ' ')
         i++;
     if (str[i] == '+' || str[i] == '-')
+    {
         i++;
+        if (!str[i])
+            return (0);
+    }
     while(str[i] >= '0' && str[i] <= '9')
         i++;
     if (str[i] != 0)
@@ -57,7 +61,7 @@ int  check_duplicates(t_stack stack)
         iter = current->next;
         while (iter != NULL)
         {
-            if (*(int *)current->content == *(int *)iter->content)
+            if (current->content == iter->content)
                 return (0);
             iter = iter->next;
         }

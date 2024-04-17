@@ -13,8 +13,8 @@ static int	get_rr(int ia, int ib, int asize, int bsize)
 	tmpb = ib;
 	while (tmpa != 0 && tmpb != 0)
 	{
-		tmpa = (tmpa + 1) % asize; 
-		tmpb = (tmpb + 1) % bsize; 
+		tmpa = (tmpa + 1) % asize;
+		tmpb = (tmpb + 1) % bsize;
 		rr++;
 	}
 	if (tmpa > asize / 2)
@@ -36,7 +36,7 @@ static int get_rrr(int ia, int ib, int asize, int bsize)
 	tmpb = ib;
 	while (tmpa != 0 && tmpb != 0)
 	{
-		tmpa = (tmpa - 1) % asize; 
+		tmpa = (tmpa - 1) % asize;
 		tmpb = (tmpb - 1) % bsize;
 		rrr++;
 	}
@@ -56,10 +56,10 @@ t_rotation	get_rot(int ia, int ib, int asize, int bsize)
 	ret.rrbra = bsize - ib + ia;
 	ret.rr = get_rr(ia, ib, asize, bsize);
 	ret.rrr = get_rrr(ia, ib, asize, bsize);
-	printf("inva + ib = %i\n", asize - ia + ib);
-	printf("ia + invb = %i\n", bsize - ib + ia);
-	printf("inva + invb = %i\n", asize - ia + bsize - ib);
-	printf("ia+ib = %i\nrr = %i\nrrr = %i\n", ia+ib, ret.rr, ret.rrr);
+	// printf("inva + ib = %i\n", asize - ia + ib);
+	// printf("ia + invb = %i\n", bsize - ib + ia);
+	// printf("inva + invb = %i\n", asize - ia + bsize - ib);
+	// printf("ia+ib = %i\nrr = %i\nrrr = %i\n", ia+ib, ret.rr, ret.rrr);
 	return (ret);
 }
 

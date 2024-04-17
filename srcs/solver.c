@@ -12,11 +12,17 @@ void	solve(t_push *stacks)
 	while (stacks->a.head != NULL)
 	{
 		next = next_move(*stacks);
-		next_targ = find_target(*stacks, *(int *)next->content);
+		printf("value to push:%i || index : %i\n", next->content, find_corresponding_index(stacks->a.head, next));
+		next_targ = find_target(*stacks, next->content);
+		if (next_targ != NULL)
+			printf("TARGET: value to push:%i || TARGET: index : %i\n", next_targ->content, find_corresponding_index(stacks->b.head, next_targ));
 		rotate_to_list(stacks, next, next_targ);
 		pb(stacks);
 	}
-	//rotate until B.head is smallest
+	printf("AJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
+	print_both(*stacks);
+	while ((stacks->b.head->content) != stacks->highest)
+		rb(stacks);
 	while (stacks->b.head != NULL)
 		pa(stacks);
 }
@@ -30,8 +36,9 @@ static t_list	*next_move(t_push stacks)
 	int		tmp;
 
 	current = stacks.a.head;
-	curtarget = find_target(stacks, *(int *)current->content);
+	curtarget = find_target(stacks, current->content);
 	cost = calculate_cost(stacks, current, curtarget);
+	ret = current;
 	while (current)
 	{
 		tmp = calculate_cost(stacks, current, curtarget);
@@ -41,32 +48,13 @@ static t_list	*next_move(t_push stacks)
 			ret = current;
 		}
 		current = current->next;
-		curtarget = find_target(stacks, *(int *)current->content);
+		if (current)
+			curtarget = find_target(stacks, current->content);
 	}
 	return (ret);
 }
 
-int	find_corresponding_index(t_list *head, t_list *target)
-{
-	int		i;
-	t_list	*iter;
-
-	i = 0;
-	iter = head;
-	while (iter != target)
-	{
-		iter = iter->next;
-		i++;
-	}
-	return (i);
-}
-
 static t_list	*find_target(t_push stacks, int target)
 {
-	t_list	*iter;
 
-	iter = stacks.b.head;
-	while (*(int *)(iter->content) > target)
-		iter = iter->next;
-	return (iter);
 }

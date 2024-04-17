@@ -6,7 +6,7 @@ void		append_list(char **argv, t_list **list, int i);
 
 void	get_stack(t_push *stack, int argc, char **argv)
 {
-    int	*headcont;
+    int	headcont;
     int	i;
 
     i = 2;
@@ -15,9 +15,7 @@ void	get_stack(t_push *stack, int argc, char **argv)
         split_stack(stack, argv);
         return ;
     }
-	headcont = malloc(sizeof(int));
-    *headcont = ft_atoi(argv[1]);
-	printf("inside list: %i\n", *headcont);
+    headcont = ft_atoi(argv[1]);
     stack->a.head = ft_lstnew(headcont);
 	stack->b.head = NULL;
     while (i < argc)
@@ -25,17 +23,16 @@ void	get_stack(t_push *stack, int argc, char **argv)
         append_list(argv, &(stack->a.head), i);
         i++;
     }
-    stack->a.size = i - 1;
+    stack->a.size = ft_lstsize(stack->a.head);
+    stack->b.size = 0;
 }
 
 void	append_list(char **argv, t_list **list, int i)
 {
-    int		*content;
+    int		content;
     t_list	*new;
 
-    content = malloc(sizeof(int));
-    *content = ft_atoi(argv[i]);
-	printf("inside list: %i\n", *content);
+    content = ft_atoi(argv[i]);
     new = ft_lstnew(content);
     ft_lstadd_back(list, new);
 }
@@ -54,7 +51,7 @@ static void	split_stack(t_push *stack, char **argv)
     i = 1;
     headcont = ft_atoi(split[0]);
     stack->a.size = size;
-    stack->a.head = ft_lstnew(&headcont);
+    stack->a.head = ft_lstnew(headcont);
     stack->b.head = NULL;
     while (i < size)
         append_list(split, &(stack->a.head), i++);
