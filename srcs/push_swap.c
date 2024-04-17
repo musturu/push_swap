@@ -35,6 +35,7 @@ int main(int argc, char **argv)
 		return (printf("no duplicati\n"));
 	highest(&stacks);
 	solve(&stacks);
+	print_both(stacks);
 	// exit
 }
 

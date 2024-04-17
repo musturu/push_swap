@@ -44,3 +44,5 @@ int		find_corresponding_index(t_list *head, t_list *target);
 void	rotate_to_list(t_push *stacks, t_list *a, t_list *b);
 t_rotation	get_rot(int ia, int ib, int asize, int bsize);
 void	solve(t_push *stacks);
+void print_stack(t_list *list);
+void print_both(t_push stack);
