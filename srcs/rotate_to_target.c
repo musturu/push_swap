@@ -51,9 +51,9 @@ static void rotate_single(t_push *stacks, t_list *list, char abflag)
 {
     int i;
 
-    i = find_corresponding_index(stacks->b.head, list);
     if (abflag == 'b')
     {
+		i = find_corresponding_index(stacks->b.head, list);
         if (i > stacks->b.size / 2)
             rrb(stacks);
         else
@@ -62,6 +62,7 @@ static void rotate_single(t_push *stacks, t_list *list, char abflag)
     }
     else
     {
+		i = find_corresponding_index(stacks->a.head, list);
         if (i > stacks->a.size / 2)
             rra(stacks);
         else

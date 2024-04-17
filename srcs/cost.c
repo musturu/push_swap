@@ -2,30 +2,7 @@
 
 static int	check_shortest(t_rotation rot);
 
-static int	get_rr(int ia, int ib, int asize, int bsize)
-{
-	int	tmpa;
-	int	tmpb;
-	int	rr;
-
-	rr = 0;
-	tmpa = ia;
-	tmpb = ib;
-	while (tmpa != 0 && tmpb != 0)
-	{
-		tmpa = (tmpa + 1) % asize;
-		tmpb = (tmpb + 1) % bsize;
-		rr++;
-	}
-	if (tmpa > asize / 2)
-		tmpa = asize - tmpa;
-	if (tmpb > bsize / 2)
-		tmpb = bsize - tmpb;
-	rr += tmpa + tmpb;
-	return (rr);
-}
-
-static int get_rrr(int ia, int ib, int asize, int bsize)
+static int	get_rrr(int ia, int ib, int asize, int bsize)
 {
 	int	tmpa;
 	int	tmpb;
@@ -36,8 +13,8 @@ static int get_rrr(int ia, int ib, int asize, int bsize)
 	tmpb = ib;
 	while (tmpa != 0 && tmpb != 0)
 	{
-		tmpa = (tmpa - 1) % asize;
-		tmpb = (tmpb - 1) % bsize;
+		tmpa = (tmpa + 1) % asize;
+		tmpb = (tmpb + 1) % bsize;
 		rrr++;
 	}
 	if (tmpa > asize / 2)
@@ -45,7 +22,30 @@ static int get_rrr(int ia, int ib, int asize, int bsize)
 	if (tmpb > bsize / 2)
 		tmpb = bsize - tmpb;
 	rrr += tmpa + tmpb;
-	return (rrr);
+	return  (rrr);
+}
+
+static int get_rr(int ia, int ib, int asize, int bsize)
+{
+	int	tmpa;
+	int	tmpb;
+	int	rr;
+
+	rr = 0;
+	tmpa = ia;
+	tmpb = ib;
+	while (tmpa != 0 && tmpb != 0)
+	{
+		tmpa = (tmpa - 1) % asize;
+		tmpb = (tmpb - 1) % bsize;
+		rr++;
+	}
+	if (tmpa > asize / 2)
+		tmpa = asize - tmpa;
+	if (tmpb > bsize / 2)
+		tmpb = bsize - tmpb;
+	rr += tmpa + tmpb;
+	return (rr);
 }
 
 t_rotation	get_rot(int ia, int ib, int asize, int bsize)
@@ -56,10 +56,6 @@ t_rotation	get_rot(int ia, int ib, int asize, int bsize)
 	ret.rrbra = bsize - ib + ia;
 	ret.rr = get_rr(ia, ib, asize, bsize);
 	ret.rrr = get_rrr(ia, ib, asize, bsize);
-	// printf("inva + ib = %i\n", asize - ia + ib);
-	// printf("ia + invb = %i\n", bsize - ib + ia);
-	// printf("inva + invb = %i\n", asize - ia + bsize - ib);
-	// printf("ia+ib = %i\nrr = %i\nrrr = %i\n", ia+ib, ret.rr, ret.rrr);
 	return (ret);
 }
 
@@ -68,11 +64,10 @@ int		calculate_cost(t_push stacks, t_list *current, t_list *target)
 	int		i[2];
 	int		cost;
 
-	i[0] = 0;
-	i[1] = 0;
 	i[0] = find_corresponding_index(stacks.a.head, current);
 	i[1] = find_corresponding_index(stacks.b.head, target);
 	cost = check_shortest(get_rot(i[0], i[1], stacks.a.size, stacks.b.size));
+
 	return (cost);
 }
 

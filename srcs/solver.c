@@ -17,7 +17,9 @@ void	solve(t_push *stacks)
 		pb(stacks);
 	}
 	while ((stacks->b.head->content) != stacks->highest)
+	{
 		rb(stacks);
+	}
 	while (stacks->b.head != NULL)
 		pa(stacks);
 }
