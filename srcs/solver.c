@@ -19,7 +19,6 @@ void	solve(t_push *stacks)
 		rotate_to_list(stacks, next, next_targ);
 		pb(stacks);
 	}
-	printf("AJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\n");
 	print_both(*stacks);
 	while ((stacks->b.head->content) != stacks->highest)
 		rb(stacks);
@@ -54,7 +53,54 @@ static t_list	*next_move(t_push stacks)
 	return (ret);
 }
 
+static	t_list	*big_target(t_push stacks, int target)
+{
+	t_list	*ret;
+	int		compare;
+	t_list	*iter;
+
+	compare = 1232131;  //max_int
+	ret = NULL;
+	iter = stacks.b.head;
+	while (iter)
+	{
+		if (iter->content < compare && iter->content > target)
+		{
+			compare = iter->content;
+			ret = iter;
+		}
+		iter = iter->next;
+	}
+	return (ret);
+}
+
+static t_list	*small_target(t_push stacks, int target)
+{
+	t_list	*ret;
+	int		compare;
+	t_list	*iter;
+
+	compare = -1232131;  //min_int
+	ret = NULL;
+	iter = stacks.b.head;
+	while (iter)
+	{
+		if (iter->content > compare && iter->content < target)
+		{
+			compare = iter->content;
+			ret = iter;
+		}
+		iter = iter->next;
+	}
+	return (ret);
+}
+
 static t_list	*find_target(t_push stacks, int target)
 {
+	t_list	*ret;
 
+	ret = small_target(stacks, target);
+	if (ret == NULL)
+		ret = big_target(stacks, target);
+	return (ret);
 }

@@ -17,8 +17,8 @@ SRCS =  srcs/push_swap.c srcs/validate.c srcs/init.c srcs/operations.c \
 srcs/operations2.c srcs/operations3.c srcs/cost.c srcs/list_utils.c srcs/rotate_to_target.c \
 srcs/solver.c
 OBJS =  objs/push_swap.o objs/validate.o objs/init.o objs/operations.o \
-objs/operations2.o objs/operations3.o objs/solver.o srcs/cost.o srcs/list_utils.o \
-srcs/rotate_to_target.o
+objs/operations2.o objs/operations3.o objs/solver.o objs/cost.o objs/list_utils.o \
+objs/rotate_to_target.o
 
 
 # Executable name
