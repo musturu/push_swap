@@ -12,14 +12,10 @@ void	solve(t_push *stacks)
 	while (stacks->a.head != NULL)
 	{
 		next = next_move(*stacks);
-		printf("value to push:%i || index : %i\n", next->content, find_corresponding_index(stacks->a.head, next));
 		next_targ = find_target(*stacks, next->content);
-		if (next_targ != NULL)
-			printf("TARGET: value to push:%i || TARGET: index : %i\n", next_targ->content, find_corresponding_index(stacks->b.head, next_targ));
 		rotate_to_list(stacks, next, next_targ);
 		pb(stacks);
 	}
-	print_both(*stacks);
 	while ((stacks->b.head->content) != stacks->highest)
 		rb(stacks);
 	while (stacks->b.head != NULL)
@@ -53,18 +49,18 @@ static t_list	*next_move(t_push stacks)
 	return (ret);
 }
 
-static	t_list	*big_target(t_push stacks, int target)
+static	t_list	*big_target(t_push stacks)
 {
 	t_list	*ret;
 	int		compare;
 	t_list	*iter;
 
-	compare = 1232131;  //max_int
+	compare = -1232131;  //max_int
 	ret = NULL;
 	iter = stacks.b.head;
 	while (iter)
 	{
-		if (iter->content < compare && iter->content > target)
+		if (iter->content > compare)
 		{
 			compare = iter->content;
 			ret = iter;
@@ -99,8 +95,8 @@ static t_list	*find_target(t_push stacks, int target)
 {
 	t_list	*ret;
 
-	ret = small_target(stacks, target);
+		ret = small_target(stacks, target);
 	if (ret == NULL)
-		ret = big_target(stacks, target);
+		ret = big_target(stacks);
 	return (ret);
 }

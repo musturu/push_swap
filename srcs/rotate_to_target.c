@@ -15,7 +15,7 @@ void		rotate_to_list(t_push *stacks, t_list *a, t_list *b)
    	ia = find_corresponding_index(stacks->a.head, a);
 	ib = find_corresponding_index(stacks->b.head, b);
 	rot = get_rot(ia, ib, stacks->a.size, stacks->b.size);
-    while (stacks->a.head != a && stacks->b.head != b)
+    while (stacks->a.head != a || stacks->b.head != b)
     {
         if ((stacks->a.head != a && stacks->b.head != b) && direction(rot) == 1)
             double_single(stacks, a, b);
@@ -54,7 +54,6 @@ static void rotate_single(t_push *stacks, t_list *list, char abflag)
     i = find_corresponding_index(stacks->b.head, list);
     if (abflag == 'b')
     {
-        printf("entra??nonpuoentrarexdXDX\n");
         if (i > stacks->b.size / 2)
             rrb(stacks);
         else

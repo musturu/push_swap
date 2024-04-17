@@ -34,20 +34,7 @@ int main(int argc, char **argv)
 	if (check_duplicates(stacks.a) == 0)
 		return (printf("no duplicati\n"));
 	highest(&stacks);
-	print_both(stacks);
-
-	// pb(&stacks);
-	// pb(&stacks);
-	// ra(&stacks);
-	// pa(&stacks);
-	// pa(&stacks);
-	// pa(&stacks);
-	// pa(&stacks);
-	// pa(&stacks);
-	// pa(&stacks);
-
 	solve(&stacks);
-	print_both(stacks);
 	// exit
 }
 
