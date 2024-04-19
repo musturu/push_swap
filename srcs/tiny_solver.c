@@ -29,21 +29,36 @@ static void	solve_three(t_push *stacks)
 		sa(stacks, 1);
 }
 
-static int	find_second_lowest(t_list	*list, int highest)
+static int	find_lowest(t_list *list)
 {
 	t_list	*tmp;
-	int	ret;
-	int		compare;
+	int		ret;
 
-	compare = INT_MIN;
 	tmp = list;
-	while (tmp)
+	ret = tmp->content;
+	while(tmp)
 	{
-		if (tmp->content > compare && tmp->content != highest)
-		{
-			compare = tmp->content;
+		if (ret > tmp->content)
 			ret = tmp->content;
-		}
+		tmp = tmp->next;
+	}
+	return (ret);
+}
+
+static int	find_second_lowest(t_list *list, int lowest)
+{
+	t_list	*tmp;
+	int		ret;
+
+	tmp = list;
+	if (tmp->content != lowest)
+		ret = tmp->content;
+	else
+		ret = tmp->next->content;
+	while(tmp)
+	{
+		if (ret > tmp->content && tmp->content != lowest)
+			ret = tmp->content;
 		tmp = tmp->next;
 	}
 	return (ret);
@@ -51,16 +66,31 @@ static int	find_second_lowest(t_list	*list, int highest)
 
 static void	push_high(t_push *stacks)
 {
-	int     second;
+	int		second;
+	int		low;
+	t_list	*highlist;
+	t_list	*lowlist;
+	int		i;
 
-	second = find_second_lowest(stacks->a.head, stacks->highest);
+	low = find_lowest(stacks->a.head);
+	second = find_second_lowest(stacks->a.head, low);
+	highlist = find_list_by_value(stacks->a.head, low);
+	lowlist = find_list_by_value(stacks->a.head, second);
 	while (stacks->a.size != 3)
 	{
-		if (stacks->a.head->content == stacks->highest)
+		i = find_corresponding_index(stacks->a.head, highlist);
+		if (!find_list_by_value(stacks->a.head, low))
+			i = find_corresponding_index(stacks->a.head, lowlist);
+		if (stacks->a.head->content == low)
+		{
 			pb(stacks);
+		}
 		if (stacks->a.head->content == second && (stacks->a.size + stacks->b.size == 5))
 			pb(stacks);
-		ra(stacks);
+		if (i * 2 > stacks->a.size)
+			rra(stacks);
+		else
+			ra(stacks);
 	}
 }
 
@@ -72,6 +102,5 @@ static void	solve_five(t_push *stacks)
 	solve_three(stacks);
 	pa(stacks);
 	pa(stacks);
-	ra(stacks);
-	ra(stacks);
+	print_both(*stacks);
 }
