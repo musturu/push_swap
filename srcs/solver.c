@@ -8,6 +8,7 @@ void	solve(t_push *stacks)
 {
 	t_list		*next;
 	t_list		*next_targ;
+	int			last_flag;
 
 	while (stacks->a.head != NULL)
 	{
@@ -16,9 +17,14 @@ void	solve(t_push *stacks)
 		rotate_to_list(stacks, next, next_targ);
 		pb(stacks);
 	}
+	next = find_list_by_value(stacks->b.head, stacks->highest);
+	last_flag = find_corresponding_index(stacks->b.head, next) > stacks->b.size / 2;
 	while ((stacks->b.head->content) != stacks->highest)
 	{
-		rb(stacks);
+		if (last_flag)
+			rrb(stacks);
+		else
+			rb(stacks);
 	}
 	while (stacks->b.head != NULL)
 		pa(stacks);

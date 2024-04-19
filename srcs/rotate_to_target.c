@@ -4,7 +4,6 @@ static void double_single(t_push *stacks, t_list *a, t_list *b);
 static int direction(t_rotation rot);
 static void toomuch_r(t_push *stacks, t_rotation rot);
 static void rotate_single(t_push *stacks, t_list *list, char abflag);
-static void double_single(t_push *stacks, t_list *a, t_list *b);
 
 void		rotate_to_list(t_push *stacks, t_list *a, t_list *b)
 {
@@ -75,11 +74,3 @@ static void double_single(t_push *stacks, t_list *a, t_list *b)
     rotate_single(stacks, a, 'a');
     rotate_single(stacks, b, 'b');
 }
-        // if (rot.rr > rot.rrarb && rot.rr > rot.rrbra && rot.rr > rot.rrr)
-        // //
-        // if (rot.rrr > rot.rrarb && rot.rrr > rot.rrbra && rot.rrr > rot.rr)
-        // //
-        // if (rot.rrarb > rot.rr && rot.rrarb > rot.rrbra && rot.rrarb > rot.rrr)
-        // //
-        // if (rot.rrbra > rot.rrarb && rot.rrbra > rot.rr && rot.rrbra > rot.rrr)
-        // //

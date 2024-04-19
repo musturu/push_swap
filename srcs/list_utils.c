@@ -18,3 +18,17 @@ int	find_corresponding_index(t_list *head, t_list *target)
 	}
 	return (i);
 }
+
+t_list	*find_list_by_value(t_list	*head, int	value)
+{
+	t_list	*tmp;
+
+	tmp = head;
+	while (tmp)
+	{
+		if (tmp->content == value)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

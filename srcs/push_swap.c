@@ -1,7 +1,8 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	highest(t_push *stack);
+int	highest(t_list *stack);
+int	is_sorted(t_list *list);
 
 void print_stack(t_list *list)
 {
@@ -30,21 +31,21 @@ int main(int argc, char **argv)
 
 	if (validate(argc, argv) == 0)
 		return (0);
-	get_stack(&stacks, argc, argv);
-	if (check_duplicates(stacks.a) == 0)
-		return (printf("no duplicati\n"));
-	highest(&stacks);
-	solve(&stacks);
-	//print_both(stacks);
-	// exit
+	if (get_stack(&stacks, argc, argv) == 0)
+		free_quit(stacks);
+	if (check_duplicates(stacks.a) == 0 || is_sorted(stacks.a.head))
+		 free_quit(stacks);
+	stacks.highest = highest(stacks.a.head);
+	tiny_solver(&stacks);
+	free_quit(stacks);
 }
 
-void	highest(t_push *stack)
+int	highest(t_list *stack)
 {
 	t_list	*cur;
 	int		ret;
 
-	cur = stack->a.head;
+	cur = stack;
 	ret = cur->content;
 	while (cur)
 	{
@@ -52,5 +53,19 @@ void	highest(t_push *stack)
 			ret = cur->content;
 		cur = cur->next;
 	}
-	stack->highest = ret;
+	return (ret);
+}
+
+int	is_sorted(t_list *list)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		if (tmp->next && tmp->content > tmp->next->content)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }

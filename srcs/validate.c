@@ -7,7 +7,7 @@ int    validate(int argc, char **argv)
     char    **split;
     int     i;
 
-    if (argc > 2)
+	if (argc > 2)
     {
         while(--argc)
         {
@@ -15,7 +15,7 @@ int    validate(int argc, char **argv)
                 return (0);
         }
     }
-    else
+	else if (argc == 2)
     {
         i = -1;
         split = ft_split(argv[1], ' ');
@@ -26,6 +26,8 @@ int    validate(int argc, char **argv)
         }
         free(split);
     }
+	else if (argc == 1)
+		return (0);
     return (1);
 }
 
