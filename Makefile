@@ -33,7 +33,6 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 
 $(NAME): $(OBJS)
 	@ make -C $(LIBFTDIR)
-	@ make bonus -C $(LIBFTDIR)
 	$(CC) -Wall -Wextra -Werror $(OBJS) $(LIBSFLAG) -o $(NAME)
 
 $(OBJDIR):

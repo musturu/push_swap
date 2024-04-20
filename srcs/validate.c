@@ -22,12 +22,12 @@ int    validate(int argc, char **argv)
         while (split[++i])
         {
             if (!is_num(split[i]))
-                return (0);
+				return (free_mat(split));
         }
-        free(split);
     }
 	else if (argc == 1)
 		return (0);
+	free_mat(split);
     return (1);
 }
 

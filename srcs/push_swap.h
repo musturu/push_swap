@@ -28,7 +28,7 @@ typedef struct s_push
 }   t_push;
 
 int			validate(int argc, char **argv);
-int		get_stack(t_push *stacks, int argc, char **argv);
+int			get_stack(t_push *stacks, int argc, char **argv);
 int			check_duplicates(t_stack stack);
 void		sa(t_push *stacks, int flag);
 void		pb(t_push *stacks);
@@ -47,7 +47,8 @@ int			find_corresponding_index(t_list *head, t_list *target);
 t_list		*find_list_by_value(t_list	*head, int	value);
 void		rotate_to_list(t_push *stacks, t_list *a, t_list *b);
 t_rotation	get_rot(int ia, int ib, int asize, int bsize);
-void		free_quit(t_push stacks);
+void		free_quit(t_push stacks, int flag);
+int			free_mat(char **mat);
 void		solve(t_push *stacks);
 void		tiny_solver(t_push *stacks);
 int			highest(t_list *stack);
