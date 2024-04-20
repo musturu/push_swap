@@ -1,11 +1,12 @@
 #include "push_swap.h"
-#include <limits.h>
 
 static void	solve_three(t_push *stacks);
 static void	solve_five(t_push *stacks);
 
 void	tiny_solver(t_push *stacks)
 {
+	if (is_sorted(stacks->a.head))
+		return ;
 	if (stacks->a.size == 3)
 		return (solve_three(stacks));
 	else if (stacks->a.size > 3 && stacks->a.size < 6)
@@ -19,8 +20,6 @@ static void	solve_three(t_push *stacks)
 	int high;
 
 	high = highest(stacks->a.head);
-	if (is_sorted(stacks->a.head))
-		return ;
 	if (stacks->a.head->content == high)
 		ra(stacks);
 	if (stacks->a.head->next->content == high)

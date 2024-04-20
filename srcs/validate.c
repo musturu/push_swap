@@ -24,10 +24,10 @@ int    validate(int argc, char **argv)
             if (!is_num(split[i]))
 				return (free_mat(split));
         }
+		free_mat(split);
     }
 	else if (argc == 1)
 		return (0);
-	free_mat(split);
     return (1);
 }
 
