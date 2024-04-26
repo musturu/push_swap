@@ -21,7 +21,7 @@ OBJS =  objs/push_swap.o objs/validate.o objs/init.o objs/operations.o \
 objs/operations2.o objs/operations3.o objs/solver.o objs/cost.o objs/list_utils.o \
 objs/rotate_to_target.o objs/memory_manager.o objs/tiny_solver.o
 
-BSRC = bonus/checker.c bonus/get_next_line_utils.c bonus/get_next_line.c
+BSRC = bsrc/checker.c bsrc/get_next_line_utils.c bsrc/get_next_line.c
 
 BUTISRC = srcs/validate.c srcs/init.c srcs/operations.c \
 srcs/operations2.c srcs/operations3.c srcs/list_utils.c \
@@ -33,7 +33,7 @@ BOJS = objs/checker.o objs/get_next_line.o objs/get_next_line_utils.o
 # Executable name
 NAME = push_swap
 
-all: $(NAME)
+all: $(NAME) | bonus
 
 $(OBJS): $(SRCS) | $(OBJDIR)
 	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -c $< -o $@
@@ -43,7 +43,7 @@ $(BOJS): $(BSRC)
 	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -c $< -o $@
 
 
-bonuss :
+bonus :
 	@ make -C $(LIBFTDIR)
 	$(CC) -Wall -Wextra -Werror $(BSRC) $(BUTISRC) $(LIBSFLAG) -o checker
 
@@ -63,6 +63,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f checker
 
 
 re: fclean all
