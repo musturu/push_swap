@@ -2,29 +2,32 @@
 
 static void	rotate(t_list **list);
 
-void	ra(t_push *stacks)
+void	ra(t_push *stacks, int flag)
 {
 	if (stacks->a.head && stacks->a.head->next)
 	{
 		rotate(&(stacks->a.head));
-		write(1, "ra\n", 3);
+		if (flag)
+			write(1, "ra\n", 3);
 	}
 }
 
-void	rb(t_push *stacks)
+void	rb(t_push *stacks, int flag)
 {
 	if (stacks->b.head && stacks->b.head->next)
 	{
 		rotate(&(stacks->b.head));
-		write(1, "rb\n", 3);
+		if (flag)
+			write(1, "rb\n", 3);
 	}
 }
 
-void	rr(t_push *stacks)
+void	rr(t_push *stacks, int flag)
 {
 	rotate(&(stacks->b.head));
 	rotate(&(stacks->a.head));
-	write(1, "rr\n", 3);
+	if (flag)
+		write(1, "rr\n", 3);
 }
 
 static void	rotate(t_list **list)

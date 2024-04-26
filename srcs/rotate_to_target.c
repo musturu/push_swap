@@ -41,9 +41,9 @@ static int direction(t_rotation rot)
 static void toomuch_r(t_push *stacks, t_rotation rot)
 {
     if (rot.rr < rot.rrr)
-        rr(stacks);
+        rr(stacks, 1);
     else
-        rrr(stacks);
+        rrr(stacks, 1);
 }
 
 static void rotate_single(t_push *stacks, t_list *list, char abflag)
@@ -54,18 +54,18 @@ static void rotate_single(t_push *stacks, t_list *list, char abflag)
     {
 		i = find_corresponding_index(stacks->b.head, list);
         if (i > stacks->b.size / 2)
-            rrb(stacks);
+            rrb(stacks, 1);
         else
-            rb(stacks);
+            rb(stacks, 1);
 
     }
     else
     {
 		i = find_corresponding_index(stacks->a.head, list);
         if (i > stacks->a.size / 2)
-            rra(stacks);
+            rra(stacks, 1);
         else
-            ra(stacks);
+            ra(stacks, 1);
     }
 }
 

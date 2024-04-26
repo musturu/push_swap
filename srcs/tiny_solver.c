@@ -21,9 +21,9 @@ static void	solve_three(t_push *stacks)
 
 	high = highest(stacks->a.head);
 	if (stacks->a.head->content == high)
-		ra(stacks);
+		ra(stacks, 1);
 	if (stacks->a.head->next->content == high)
-		rra(stacks);
+		rra(stacks, 1);
 	if (stacks->a.head->content > stacks->a.head->next->content)
 		sa(stacks, 1);
 }
@@ -82,14 +82,14 @@ static void	push_high(t_push *stacks)
 			i = find_corresponding_index(stacks->a.head, lowlist);
 		if (stacks->a.head->content == low)
 		{
-			pb(stacks);
+			pb(stacks, 1);
 		}
 		if (stacks->a.head->content == second && (stacks->a.size + stacks->b.size == 5))
-			pb(stacks);
+			pb(stacks, 1);
 		if (i * 2 > stacks->a.size)
-			rra(stacks);
+			rra(stacks, 1);
 		else
-			ra(stacks);
+			ra(stacks, 1);
 	}
 }
 
@@ -99,7 +99,6 @@ static void	solve_five(t_push *stacks)
 	if (stacks->b.head->next && stacks->b.head->content < stacks->b.head->next->content)
 		sb(stacks, 1);
 	solve_three(stacks);
-	pa(stacks);
-	pa(stacks);
-	print_both(*stacks);
+	pa(stacks, 1);
+	pa(stacks, 1);
 }

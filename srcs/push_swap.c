@@ -1,29 +1,7 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 int	highest(t_list *stack);
 int	is_sorted(t_list *list);
-
-void print_stack(t_list *list)
-{
-	t_list *tmp;
-	int i;
-	tmp = list;
-	while (tmp)
-	{
-		i = (tmp->content);
-		printf("current: [%p]  next: [%p] value : \t%d\n ", tmp, tmp->next, i);
-		tmp = tmp->next;
-	}
-}
-
-void print_both(t_push stack)
-{
-	(void)write(1, "\na:\n", 4);
-	print_stack(stack.a.head);
-	(void)write(1, "\nb:\n", 4);
-	print_stack(stack.b.head);
-}
 
 int main(int argc, char **argv)
 {
@@ -37,6 +15,7 @@ int main(int argc, char **argv)
 		 free_quit(stacks, 0);
 	stacks.highest = highest(stacks.a.head);
 	tiny_solver(&stacks);
+	print_both(stacks);
 	free_quit(stacks, 0);
 }
 

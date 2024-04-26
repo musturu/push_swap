@@ -2,26 +2,29 @@
 
 static void	revrotate(t_list **list);
 
-void	rrb(t_push *stacks)
+void	rrb(t_push *stacks, int flag)
 {
 	if (stacks->b.head && stacks->b.head->next)
 		revrotate(&(stacks->b.head));
-	write(1, "rrb\n", 4);
+	if (flag)
+		write(1, "rrb\n", 4);
 }
 
-void	rra(t_push *stacks)
+void	rra(t_push *stacks, int flag)
 {
 	if (stacks->a.head && stacks->a.head->next)
 		revrotate(&(stacks->a.head));
-	write(1, "rra\n", 4);
+	if (flag)
+		write(1, "rra\n", 4);
 
 }
 
-void	rrr(t_push *stacks)
+void	rrr(t_push *stacks, int flag)
 {
     revrotate(&(stacks->a.head));
 	revrotate(&(stacks->b.head));
-	write(1, "rrr\n", 4);
+	if (flag)
+		write(1, "rrr\n", 4);
 
 }
 

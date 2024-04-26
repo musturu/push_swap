@@ -38,14 +38,15 @@ void	sb(t_push *stacks, int writeflag)
 	}
 }
 
-void	ss(t_push *stacks)
+void	ss(t_push *stacks, int flag)
 {
 	sa(stacks, 0);
 	sb(stacks, 0);
-	write(1, "ss\n", 3);
+	if (flag)
+		write(1, "ss\n", 3);
 }
 
-void	pa(t_push *stacks)
+void	pa(t_push *stacks, int flag)
 {
 	t_list	*bfirst;
 	t_list	*afirst;
@@ -59,11 +60,12 @@ void	pa(t_push *stacks)
 		stacks->a.head = bfirst;
 		stacks->a.size++;
 		stacks->b.size--;
-		write(1, "pa\n", 3);
+		if (flag)
+			write(1, "pa\n", 3);
 	}
 }
 
-void	pb(t_push *stacks)
+void	pb(t_push *stacks, int flag)
 {
 	t_list	*bfirst;
 	t_list	*afirst;
@@ -77,6 +79,7 @@ void	pb(t_push *stacks)
 		stacks->b.head = afirst;
 		stacks->a.size--;
 		stacks->b.size++;
-		write(1, "pb\n", 3);
+		if (flag)
+			write(1, "pb\n", 3);
 	}
 }
