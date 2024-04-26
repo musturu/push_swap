@@ -1,7 +1,6 @@
 #include "push_swap.h"
 
 int	highest(t_list *stack);
-int	is_sorted(t_list *list);
 
 int main(int argc, char **argv)
 {
@@ -15,7 +14,6 @@ int main(int argc, char **argv)
 		 free_quit(stacks, 0);
 	stacks.highest = highest(stacks.a.head);
 	tiny_solver(&stacks);
-	print_both(stacks);
 	free_quit(stacks, 0);
 }
 
@@ -33,18 +31,4 @@ int	highest(t_list *stack)
 		cur = cur->next;
 	}
 	return (ret);
-}
-
-int	is_sorted(t_list *list)
-{
-	t_list	*tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		if (tmp->next && tmp->content > tmp->next->content)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
 }

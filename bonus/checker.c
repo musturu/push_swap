@@ -1,5 +1,6 @@
 
 #include "checker.h"
+#include <stdio.h>
 void	readloop(t_push *stacks);
 
 int	main(int argc, char **argv)
@@ -22,31 +23,28 @@ int	main(int argc, char **argv)
 
 void	execute(char *str, t_push *stacks)
 {
-	if (strncmp(str, "pa\n", 3))
-		pa(stacks);
-	if (strncmp(str, "pb\n", 3))
-		pb(stacks);
-	if (strncmp(str, "ra\n", 3))
-		ra(stacks);
-	if (strncmp(str, "rb\n", 3))
-		rb(stacks);
-	if (strncmp(str, "sa\n", 3))
-		sa(stacks, 0);
-	if (strncmp(str, "sb\n", 3))
-		sb(stacks, 0);
-	if (strncmp(str, "rra\n", 4))
-		rra(stacks);
-	if (strncmp(str, "rrb\n", 4))
-		rrb(stacks);
-	if (strncmp(str, "rrr\n", 4))
-		rrr(stacks);
-	if (strncmp(str, "rr\n", 4))
-		rr(stacks);
-	else
-	{
-		free(str);
-		free_quit(*stacks, 1);
-	}
+	if (!strncmp(str, "pa\n", 4))
+		return pa(stacks, 0);
+	else if (!strncmp(str, "pb\n", 4))
+		return pb(stacks, 0);
+	else if (!strncmp(str, "ra\n", 4))
+		return ra(stacks, 0);
+	else if (!strncmp(str, "rb\n", 4))
+		return rb(stacks, 0);
+	else if (!strncmp(str, "sa\n", 4))
+		return sa(stacks, 0);
+	else if (!strncmp(str, "sb\n", 4))
+		return sb(stacks, 0);
+	else if (!strncmp(str, "rra\n", 5))
+		return rra(stacks, 0);
+	else if (!strncmp(str, "rrb\n", 5))
+		return rrb(stacks, 0);
+	else if (!strncmp(str, "rrr\n", 5))
+		return rrr(stacks, 0);
+	else if (!strncmp(str, "rr\n", 4))
+		return rr(stacks, 0);
+	free(str);
+	free_quit(*stacks, 1);
 }
 
 void	readloop(t_push *stacks)

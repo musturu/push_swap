@@ -21,30 +21,52 @@ OBJS =  objs/push_swap.o objs/validate.o objs/init.o objs/operations.o \
 objs/operations2.o objs/operations3.o objs/solver.o objs/cost.o objs/list_utils.o \
 objs/rotate_to_target.o objs/memory_manager.o objs/tiny_solver.o
 
+BSRC = bonus/checker.c bonus/get_next_line_utils.c bonus/get_next_line.c
+
+BUTISRC = srcs/validate.c srcs/init.c srcs/operations.c \
+srcs/operations2.c srcs/operations3.c srcs/list_utils.c \
+srcs/memory_manager.c
+
+BOJS = objs/checker.o objs/get_next_line.o objs/get_next_line_utils.o
+
 
 # Executable name
 NAME = push_swap
 
 all: $(NAME)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+$(OBJS): $(SRCS) | $(OBJDIR)
+	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -c $< -o $@
+ 
+
+$(BOJS): $(BSRC)
 	$(CC) -Wall -Wextra -Werror $(LIBSFLAG) -c $< -o $@
 
 
-$(NAME): $(OBJS)
+bonuss :
 	@ make -C $(LIBFTDIR)
-	$(CC) -Wall -Wextra -Werror $(OBJS) $(LIBSFLAG) -o $(NAME)
+	$(CC) -Wall -Wextra -Werror $(BSRC) $(BUTISRC) $(LIBSFLAG) -o checker
+
+
+$(NAME):
+	@ make -C $(LIBFTDIR)
+	$(CC) -Wall -Wextra -Werror $(SRCS) $(LIBSFLAG) -o $(NAME)
+		
 
 $(OBJDIR):
 	mkdir -p $@
 
+
 clean:
 	rm -rf $(OBJDIR)
+
 
 fclean: clean
 	rm -f $(NAME)
 
+
 re: fclean all
+
 
 git:
 	make fclean
@@ -52,5 +74,6 @@ git:
 	git add .
 	git commit -m "auto-commit"
 	git push
+
 
 .PHONY: all clean fclean re

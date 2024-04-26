@@ -32,3 +32,17 @@ t_list	*find_list_by_value(t_list	*head, int	value)
 	}
 	return (NULL);
 }
+
+int	is_sorted(t_list *list)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		if (tmp->next && tmp->content > tmp->next->content)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
