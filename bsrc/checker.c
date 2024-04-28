@@ -1,6 +1,6 @@
 
 #include "checker.h"
-#include <stdio.h>
+
 void	readloop(t_push *stacks);
 
 int	main(int argc, char **argv)

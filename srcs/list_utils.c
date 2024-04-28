@@ -46,3 +46,19 @@ int	is_sorted(t_list *list)
 	}
 	return (1);
 }
+
+int	find_lowest(t_list *list)
+{
+	t_list	*tmp;
+	int		ret;
+
+	tmp = list;
+	ret = tmp->content;
+	while(tmp)
+	{
+		if (ret > tmp->content)
+			ret = tmp->content;
+		tmp = tmp->next;
+	}
+	return (ret);
+}

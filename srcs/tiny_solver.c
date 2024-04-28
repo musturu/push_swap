@@ -28,22 +28,6 @@ static void	solve_three(t_push *stacks)
 		sa(stacks, 1);
 }
 
-static int	find_lowest(t_list *list)
-{
-	t_list	*tmp;
-	int		ret;
-
-	tmp = list;
-	ret = tmp->content;
-	while(tmp)
-	{
-		if (ret > tmp->content)
-			ret = tmp->content;
-		tmp = tmp->next;
-	}
-	return (ret);
-}
-
 static int	find_second_lowest(t_list *list, int lowest)
 {
 	t_list	*tmp;
@@ -65,11 +49,8 @@ static int	find_second_lowest(t_list *list, int lowest)
 
 static void	push_high(t_push *stacks)
 {
-	int		second;
-	int		low;
-	t_list	*highlist;
-	t_list	*lowlist;
-	int		i;
+	int		second, i, low;
+	t_list	*highlist, *lowlist;
 
 	low = find_lowest(stacks->a.head);
 	second = find_second_lowest(stacks->a.head, low);

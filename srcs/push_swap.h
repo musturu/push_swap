@@ -49,6 +49,7 @@ void		rotate_to_list(t_push *stacks, t_list *a, t_list *b);
 t_rotation	get_rot(int ia, int ib, int asize, int bsize);
 void		free_quit(t_push stacks, int flag);
 int			free_mat(char **mat);
+int			find_lowest(t_list *list);
 void		solve(t_push *stacks);
 void		tiny_solver(t_push *stacks);
 int			highest(t_list *stack);
