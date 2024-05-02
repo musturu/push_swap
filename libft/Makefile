@@ -35,7 +35,6 @@ RM = rm -f
 
 $(NAME): $(OUTFILE)
 		ar rcs $(NAME) $(OUTFILE)
-		make clean
 
 all:	$(NAME)
 
