@@ -22,10 +22,10 @@ static int	get_rrr(int ia, int ib, int asize, int bsize)
 	if (tmpb > bsize / 2)
 		tmpb = bsize - tmpb;
 	rrr += tmpa + tmpb;
-	return  (rrr);
+	return (rrr);
 }
 
-static int get_rr(int ia, int ib, int asize, int bsize)
+static int	get_rr(int ia, int ib, int asize, int bsize)
 {
 	int	tmpa;
 	int	tmpb;
@@ -50,7 +50,7 @@ static int get_rr(int ia, int ib, int asize, int bsize)
 
 t_rotation	get_rot(int ia, int ib, int asize, int bsize)
 {
-	t_rotation ret;
+	t_rotation	ret;
 
 	ret.rrarb = asize - ia + ib;
 	ret.rrbra = bsize - ib + ia;
@@ -59,7 +59,7 @@ t_rotation	get_rot(int ia, int ib, int asize, int bsize)
 	return (ret);
 }
 
-int		calculate_cost(t_push stacks, t_list *current, t_list *target)
+int	calculate_cost(t_push stacks, t_list *current, t_list *target)
 {
 	int		i[2];
 	int		cost;
@@ -67,7 +67,6 @@ int		calculate_cost(t_push stacks, t_list *current, t_list *target)
 	i[0] = find_corresponding_index(stacks.a.head, current);
 	i[1] = find_corresponding_index(stacks.b.head, target);
 	cost = check_shortest(get_rot(i[0], i[1], stacks.a.size, stacks.b.size));
-
 	return (cost);
 }
 

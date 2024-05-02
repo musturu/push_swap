@@ -12,8 +12,7 @@ void	free_quit(t_push stacks, int flag)
 		to_free = tmp;
 		tmp = tmp->next;
 		free(to_free);
-	}
-	
+	}	
 	if (stacks.b.head)
 		tmp = stacks.b.head;
 	while (tmp)

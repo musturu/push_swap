@@ -1,5 +1,5 @@
-#ifndef PS_SP_H
-#define PS_SP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "../libft/libft.h"
 # include <stdio.h>
@@ -12,20 +12,20 @@ typedef struct s_rotation
 	int	rrbra;
 	int	rr;
 	int	rrr;
-} t_rotation;
+}	t_rotation;
 
 typedef struct s_stack
 {
-    t_list  *head;
-    int     size;
-}   t_stack;
+	t_list	*head;
+	int		size;
+}	t_stack;
 
 typedef struct s_push
 {
-    t_stack a;
-    t_stack b;
-    int     highest;
-}   t_push;
+	t_stack	a;
+	t_stack	b;
+	int		highest;
+}	t_push;
 
 int			validate(int argc, char **argv);
 int			get_stack(t_push *stacks, int argc, char **argv);
@@ -44,7 +44,7 @@ void		rr(t_push *stacks, int flag);
 int			is_sorted(t_list *stack);
 int			calculate_cost(t_push stacks, t_list *current, t_list *target);
 int			find_corresponding_index(t_list *head, t_list *target);
-t_list		*find_list_by_value(t_list	*head, int	value);
+t_list		*find_list_by_value(t_list *head, int value);
 void		rotate_to_list(t_push *stacks, t_list *a, t_list *b);
 t_rotation	get_rot(int ia, int ib, int asize, int bsize);
 void		free_quit(t_push stacks, int flag);

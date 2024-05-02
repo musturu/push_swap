@@ -19,7 +19,7 @@ int	find_corresponding_index(t_list *head, t_list *target)
 	return (i);
 }
 
-t_list	*find_list_by_value(t_list	*head, int	value)
+t_list	*find_list_by_value(t_list *head, int value)
 {
 	t_list	*tmp;
 
@@ -54,7 +54,7 @@ int	find_lowest(t_list *list)
 
 	tmp = list;
 	ret = tmp->content;
-	while(tmp)
+	while (tmp)
 	{
 		if (ret > tmp->content)
 			ret = tmp->content;

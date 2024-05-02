@@ -16,22 +16,20 @@ void	rra(t_push *stacks, int flag)
 		revrotate(&(stacks->a.head));
 	if (flag)
 		write(1, "rra\n", 4);
-
 }
 
 void	rrr(t_push *stacks, int flag)
 {
-    revrotate(&(stacks->a.head));
+	revrotate(&(stacks->a.head));
 	revrotate(&(stacks->b.head));
 	if (flag)
 		write(1, "rrr\n", 4);
-
 }
 
 static void	revrotate(t_list **list)
 {
-	t_list *first;
-	t_list *last;
+	t_list	*first;
+	t_list	*last;
 	t_list	*lastprev;
 
 	lastprev = *list;

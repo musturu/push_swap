@@ -1,5 +1,5 @@
 #ifndef CHECKER_H
-#define CHECKER_H
+# define CHECKER_H
 
 # include "../srcs/push_swap.h"
 

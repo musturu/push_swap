@@ -1,32 +1,33 @@
 #include "push_swap.h"
+#include <limits.h>
 
 static t_list	*next_move(t_push stacks);
 static t_list	*find_target(t_push stacks, int target);
 
-void	solve(t_push *stacks)
+void	solve(t_push *s)
 {
 	t_list		*next;
 	t_list		*next_targ;
 	int			last_flag;
 
-	while (stacks->a.head != NULL)
+	while (s->a.head != NULL)
 	{
-		next = next_move(*stacks);
-		next_targ = find_target(*stacks, next->content);
-		rotate_to_list(stacks, next, next_targ);
-		pb(stacks, 1);
+		next = next_move(*s);
+		next_targ = find_target(*s, next->content);
+		rotate_to_list(s, next, next_targ);
+		pb(s, 1);
 	}
-	next = find_list_by_value(stacks->b.head, stacks->highest);
-	last_flag = find_corresponding_index(stacks->b.head, next) > stacks->b.size / 2;
-	while ((stacks->b.head->content) != stacks->highest)
+	next = find_list_by_value(s->b.head, s->highest);
+	last_flag = find_corresponding_index(s->b.head, next) > s->b.size / 2;
+	while ((s->b.head->content) != s->highest)
 	{
 		if (last_flag)
-			rrb(stacks, 1);
+			rrb(s, 1);
 		else
-			rb(stacks, 1);
+			rb(s, 1);
 	}
-	while (stacks->b.head != NULL)
-		pa(stacks, 1);
+	while (s->b.head != NULL)
+		pa(s, 1);
 }
 
 static t_list	*next_move(t_push stacks)
@@ -62,7 +63,7 @@ static	t_list	*big_target(t_push stacks)
 	int		compare;
 	t_list	*iter;
 
-	compare = -1232131;  //max_int
+	compare = INT_MIN;
 	ret = NULL;
 	iter = stacks.b.head;
 	while (iter)
@@ -83,7 +84,7 @@ static t_list	*small_target(t_push stacks, int target)
 	int		compare;
 	t_list	*iter;
 
-	compare = -1232131;  //min_int
+	compare = INT_MIN;
 	ret = NULL;
 	iter = stacks.b.head;
 	while (iter)
@@ -102,7 +103,7 @@ static t_list	*find_target(t_push stacks, int target)
 {
 	t_list	*ret;
 
-		ret = small_target(stacks, target);
+	ret = small_target(stacks, target);
 	if (ret == NULL)
 		ret = big_target(stacks);
 	return (ret);
