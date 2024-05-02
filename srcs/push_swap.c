@@ -11,7 +11,7 @@ int	main(int argc, char **argv)
 	if (get_stack(&stacks, argc, argv) == 0)
 		free_quit(stacks, 1);
 	if (check_duplicates(stacks.a) == 0)
-		free_quit(stacks, 0);
+		free_quit(stacks, 1);
 	stacks.highest = highest(stacks.a.head);
 	tiny_solver(&stacks);
 	free_quit(stacks, 0);

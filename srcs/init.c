@@ -64,6 +64,7 @@ static void	split_stack(t_push *stack, char **argv, int *ret)
 	stack->a.size = size;
 	stack->a.head = ft_lstnew(headcont);
 	stack->b.head = NULL;
+	stack->b.size = 0;
 	while (i < size)
 		append_list(split, &(stack->a.head), i++, ret);
 	while (size--)
