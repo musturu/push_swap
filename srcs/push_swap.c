@@ -6,6 +6,8 @@ int	main(int argc, char **argv)
 {
 	t_push	stacks;
 
+	if (argc == 2 && argv[1][0] == 0)
+		return (write(2, "Error\n", 6));
 	if (validate(argc, argv) == 0)
 		return (write(2, "Error\n", 6));
 	if (get_stack(&stacks, argc, argv) == 0)
