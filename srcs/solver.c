@@ -44,6 +44,8 @@ static t_list	*next_move(t_push stacks)
 	ret = current;
 	while (current)
 	{
+		if (cost == 0 || cost == 1)
+			return (ret);
 		tmp = calculate_cost(stacks, current, curtarget);
 		if (tmp < cost)
 		{

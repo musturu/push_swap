@@ -28,7 +28,7 @@ typedef struct s_push
 }	t_push;
 
 int			validate(int argc, char **argv);
-int			get_stack(t_push *stacks, int argc, char **argv);
+void		get_stack(t_push *stacks, int argc, char **argv);
 int			check_duplicates(t_stack stack);
 void		sa(t_push *stacks, int flag);
 void		pb(t_push *stacks, int flag);

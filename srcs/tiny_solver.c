@@ -7,7 +7,7 @@ void	tiny_solver(t_push *stacks)
 {
 	if (is_sorted(stacks->a.head))
 		return ;
-	if (stacks->a.size == 3)
+	if (stacks->a.size <= 3)
 		return (solve_three(stacks));
 	else if (stacks->a.size > 3 && stacks->a.size < 6)
 		return (solve_five(stacks));
@@ -22,6 +22,8 @@ static void	solve_three(t_push *stacks)
 	high = highest(stacks->a.head);
 	if (stacks->a.head->content == high)
 		ra(stacks, 1);
+	if (is_sorted(stacks->a.head))
+		return ;
 	if (stacks->a.head->next->content == high)
 		rra(stacks, 1);
 	if (stacks->a.head->content > stacks->a.head->next->content)

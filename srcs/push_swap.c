@@ -6,14 +6,9 @@ int	main(int argc, char **argv)
 {
 	t_push	stacks;
 
-	if (argc == 2 && argv[1][0] == 0)
-		return (write(2, "Error\n", 6));
 	if (validate(argc, argv) == 0)
 		return (write(2, "Error\n", 6));
-	if (get_stack(&stacks, argc, argv) == 0)
-		free_quit(stacks, 1);
-	if (check_duplicates(stacks.a) == 0)
-		free_quit(stacks, 1);
+	get_stack(&stacks, argc, argv);
 	stacks.highest = highest(stacks.a.head);
 	tiny_solver(&stacks);
 	free_quit(stacks, 0);
