@@ -30,33 +30,32 @@ void	solve(t_push *s)
 		pa(s, 1);
 }
 
-static t_list	*next_move(t_push stacks)
+static t_list	*next_move(t_push s)
 {
-	t_list	*current;
-	t_list	*ret;
-	t_list	*curtarget;
-	int		cost;
-	int		tmp;
+	t_list	*lists[3];
+	int		i[3];
 
-	current = stacks.a.head;
-	curtarget = find_target(stacks, current->content);
-	cost = calculate_cost(stacks, current, curtarget);
-	ret = current;
-	while (current)
+	i[2] = 0;
+	lists[0] = s.a.head;
+	i[0] = INT_MAX;
+	while (lists[0] && ++i[2])
 	{
-		if (cost == 0 || cost == 1)
-			return (ret);
-		tmp = calculate_cost(stacks, current, curtarget);
-		if (tmp < cost)
+		if (i[0] == 0 || i[0] == 1)
+			return (lists[2]);
+		if (!((i[2] < s.a.size / 2 && i[0] < i[2])
+			|| ( i[2] > s.a.size / 2 && i[0] < s.a.size - i[2])))
 		{
-			cost = tmp;
-			ret = current;
+			lists[1] = find_target(s, lists[0]->content);
+			i[1] = calculate_cost(s, lists[0], lists[1]);
+			if (i[1] < i[0])
+			{
+				i[0] = i[1];
+				lists[2] = lists[0];
+			}
 		}
-		current = current->next;
-		if (current)
-			curtarget = find_target(stacks, current->content);
+		lists[0] = lists[0]->next;
 	}
-	return (ret);
+	return (lists[2]);
 }
 
 static	t_list	*big_target(t_push stacks)
