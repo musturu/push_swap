@@ -8,8 +8,7 @@ int	main(int argc, char **argv)
 
 	if (validate(argc, argv) == 0)
 		return (write(2, "Error\n", 6));
-	if (get_stack(&stacks, argc, argv) == 0)
-		free_quit(stacks, 1);
+	get_stack(&stacks, argc, argv);
 	readloop(&stacks);
 	if (is_sorted(stacks.a.head) && !stacks.b.head)
 		write(1, "OK\n", 3);
