@@ -56,7 +56,7 @@ int validate(int argc, char **argv)
 
 	ret = 1;
 	if (argc < 2)
-		return (0);
+		exit(0);
 	if (argc == 2)
 	{
 		mat = ft_split(argv[1], ' ');

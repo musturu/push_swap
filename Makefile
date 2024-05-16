@@ -55,7 +55,6 @@ $(CHECKER) : $(BOJS) $(OBJS)
 $(NAME): $(OBJS)
 	@ make -C $(LIBFTDIR)
 	$(CC) -Wall -Wextra -Werror $(OBJS) $(LIBSFLAG) -o $(NAME)
-		
 
 $(OBJDIR):
 	mkdir -p $@
@@ -67,14 +66,11 @@ clean:
 	rm -rf $(OBJDIR)
 	rm -rf $(BONUSOBJDIR)
 
-
 fclean: clean
 	rm -f $(NAME)
 	rm -f checker
 
-
 re: fclean all
-
 
 git:
 	make fclean
@@ -82,6 +78,5 @@ git:
 	git add .
 	git commit -m "auto-commit"
 	git push
-
 
 .PHONY: all clean fclean re
